@@ -1,0 +1,12 @@
+<% if flash[:error].present? %>
+  <h2>
+    <%= flash[:error] %>
+  </h2>
+<% end %>
+<%= form_tag '/login', :class => 'form-inline' do  %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, nil, :autofocus => :true, :required => true, :class => 'form-control' %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password, nil, :required => true, :class => 'form-control' %>
+  <%= submit_tag 'login', :class => 'btn btn-primary' %>
+<% end %>

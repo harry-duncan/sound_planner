@@ -1,0 +1,5 @@
+<% if @current_user.present? %>
+  <%= render :partial => "layouts/user_display" %>
+<% else %>
+  <%= render :partial => "layouts/loggedout_display" %>
+<% end %>
