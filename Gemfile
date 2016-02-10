@@ -31,6 +31,7 @@ gem 'haml'
 gem 'momentjs-rails'
 gem 'bandsintown'
 gem 'soundcloud'
+gem 'fullcalendar-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
