@@ -40,10 +40,6 @@ class EventsController < ApplicationController
 
     render :search
 
-
-
-
-
     # raise "a glass"
 
     # ITS TIME FOLKS...... HTTPARRTY!!!!
@@ -53,7 +49,7 @@ class EventsController < ApplicationController
     # response = HTTParty.get(url)
     # @response = response
 
-    # # raise 'questions about life/code'
+    # raise 'questions about life/code'
   end
 
   # GET /events/new

@@ -1,42 +1,40 @@
 <% if @current_user.present? %>
   <%= render :partial => "layouts/user_display" %>
+  <script>
+    $(document).ready(function() {
+      var user_id = <%= @current_user.id %>;
+      var url = "<%= calendar_path(@current_user) %>";
+      $.ajax({
+        url: url
+      }).done(function (data) {
+        data = data.map(function (event) {
+          return {
+            title: event.name,
+            start: event.date_time,
+            description: event.ticket_url
+          }
+        });
+        $('#calendar').fullCalendar({
+          events: data,
+          eventColor: '#b4b4b4', // Update event color
+          eventRender: function(event, element) {
+            element.tooltip({
+                content: event.description
+            });
+          },
+          dayClick: function() {
+            console.log("event has been clicked")
+          },
+          eventClick: function(calEvent, jsEvent, view) {
+            // need to make a modal happen here for the event details
+            alert('Event: ' + calEvent.title); // Need to mod these out to what i want to display no i have them working
+            alert('View: ' + view.name);
+          }
+        });
+      });
+    });
+  </script>
 <% else %>
   <%= render :partial => "layouts/loggedout_display" %>
 <% end %>
 
-<script>
-  $(document).ready(function() {
-    var user_id = <%= @current_user.id %>;
-    var url = "<%= calendar_path(@current_user) %>";
-    $.ajax({
-      url: url
-    }).done(function (data) {
-      data = data.map(function (event) {
-        return {
-          title: event.name,
-          start: event.date_time,
-          description: event.ticket_url
-        }
-      });
-      $('#calendar').fullCalendar({
-        events: data,
-        eventColor: '#b4b4b4', // Update event color
-        eventRender: function(event, element) {
-          element.tooltip({
-              content: event.description
-          });
-        },
-        dayClick: function() {
-          console.log("event has been clicked")
-        },
-        eventClick: function(calEvent, jsEvent, view) {
-
-          // need to make a modal happen here for the event details
-          alert('Event: ' + calEvent.title); // Need to mod these out to what i want to display no i have them working
-          alert('View: ' + view.name);
-
-        }
-      });
-    });
-  });
-</script>
