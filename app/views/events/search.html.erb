@@ -1,3 +1,20 @@
 <h2>this is the search page fuck yeah </h2>
+<% @events.each do |e| %>
+  <p class="searchResult">
+    <span class="venue"><%= e.venue.name %></span>
+    <span class="date"><%= e.datetime %></span>
+    <span class="city"><%= e.venue.city %></span>
+    <span class="ticketURL"><%= e.ticket_url %></span>
+    <% if e.ticket_status == 'available' %>
+      <button class="addCalendarButton">Add to calendar</button>
+    <% end %>
+  </p>
+<% end %>
+
+
+<h2>This is the events</h2>
 <%= @events %>
+<h2>this is the artist</h2>
 <%= @artist %>
+
+

@@ -10,6 +10,9 @@
 #  description  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  date_time    :datetime
+#  ticket_url   :text
+#  venue        :text
 #
 
 class EventsController < ApplicationController
@@ -39,6 +42,8 @@ class EventsController < ApplicationController
 
 
 
+
+
     # raise "a glass"
 
     # ITS TIME FOLKS...... HTTPARRTY!!!!
@@ -48,7 +53,7 @@ class EventsController < ApplicationController
     # response = HTTParty.get(url)
     # @response = response
 
-    # raise 'questions about life/code'
+    # # raise 'questions about life/code'
   end
 
   # GET /events/new
@@ -64,6 +69,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
+    @event.user_id = @current_user.id
 
     respond_to do |format|
       if @event.save
@@ -108,6 +114,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:user_id, :name, :date, :ticket_price, :description)
+      params.require(:event).permit(:user_id, :name, :date_time, :venue, :ticket_url, :ticket_price, :description)
     end
 end

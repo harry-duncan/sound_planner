@@ -10,6 +10,9 @@
 #  description  :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  date_time    :datetime
+#  ticket_url   :text
+#  venue        :text
 #
 
 require 'rails_helper'

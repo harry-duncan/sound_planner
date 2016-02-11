@@ -14,7 +14,22 @@
 //   $(".searchForm").on("submit", search);
 // });
 
-// This is kinda fucked as failing the gem and ajax we are now going to start a party....  A HTTPARTY!!!!!!
+// This is kinda fucked as failing the gem, api and ajax we are now going to start a party....  A HTTPARTY!!!!!!
 
-
-
+$(document).ready(function(){
+  $('.addCalendarButton').on('click', function(){
+    $.ajax('/events', {
+      type: 'POST',
+      data: {
+        event: {
+          name: $(this).siblings(".venue").text(),
+          date_time: $(this).siblings(".date").text(),
+          venue: $(this).siblings(".city").text(),
+          ticket_url: $(this).siblings(".ticketURL").text()
+        }
+      }
+    }).done(function () {
+      console.log("SUCCESS");
+    });
+  })
+});
