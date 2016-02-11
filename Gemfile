@@ -29,9 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'haml'
 gem 'momentjs-rails'
-gem 'bandsintown'
+gem 'bandsintown', :git => 'https://github.com/mitchellhenke/api-gem'
 gem 'soundcloud'
 gem 'fullcalendar-rails'
+gem 'eventful_api'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

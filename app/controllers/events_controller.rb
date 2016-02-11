@@ -26,6 +26,31 @@ class EventsController < ApplicationController
   def show
   end
 
+  def search
+    Bandsintown.app_id = 'Sound_Planner'
+
+    @artist = Bandsintown::Artist.new({
+      :name => params[:artist]
+    })
+
+    @events = @artist.events
+
+    render :search
+
+
+
+    # raise "a glass"
+
+    # ITS TIME FOLKS...... HTTPARRTY!!!!
+
+    # url = "http://api.bandsintown.com/artists/#{ params[:artist] }/events.json?api_version=2.0&app_id=YOUR_APP_ID&location=use_geoip"
+
+    # response = HTTParty.get(url)
+    # @response = response
+
+    # raise 'questions about life/code'
+  end
+
   # GET /events/new
   def new
     @event = Event.new
